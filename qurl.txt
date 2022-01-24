@@ -1,0 +1,59 @@
+//setHeroStats 
+//correct
+curl --location --request POST 'localhost:3000/setHeroStats' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+    "name": "Spider-man",
+    "strength": 10,
+    "dexterity": 5,
+    "intellect": 3,
+    "isInvincible": true
+}'
+
+//incorrect 1 - wrong type
+curl --location --request POST 'localhost:3000/setHeroStats' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+    "name": "Spider-man",
+    "strength": 10,
+    "dexterity": 5,
+    "intellect": 3,
+    "isInvincible": 1000000
+}'
+
+//incorrect 2 - additional properties 
+curl --location --request POST 'localhost:3000/setHeroStats' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+    "name": "Spider-man",
+    "strength": 10,
+    "dexterity": 5,
+    "intellect": 3,
+    "isInvincible": true,
+    "test": true
+}'
+
+//incorrect 3 - lost properties
+curl --location --request POST 'localhost:3000/setHeroStats' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+    "name": "Spider-man",
+    "intellect": 3,
+    "isInvincible": true
+}'
+
+//----------------------
+
+//getHeroStats
+curl --location --request GET 'localhost:3000/getHeroStats'
+
+//uploadHeroImage
+curl --location --request POST 'localhost:3000/uploadHeroImage' \
+--form 'image=@"/path/to/file"'
+
+//getHeroImage
+curl --location --request GET 'localhost:3000/getHeroImage'
